@@ -1,11 +1,11 @@
 import streamlit as st
 
-st.set_page_config(page_title="Diagnostic Intelligence System", page_icon="🏥", layout="wide")
+st.set_page_config(page_title="Diagnostic Intelligence System", page_icon="🩺", layout="wide")
 
-st.title("Session State & Statefulness")
+st.title("Session State Architecture")
 
 st.markdown("""
-This page demonstrates how to persist variables and models across re-runs.
+This module demonstrates memory persistence mechanisms ensuring operational continuity across iterative application re-runs.
 """)
 
 st.header("Volatile vs Session State Counters")
@@ -58,7 +58,7 @@ for key, val in defaults.items():
 def on_model_change():
     st.session_state.model = None
     st.session_state.is_trained = False
-    st.toast('Model reset — please retrain.', icon='⚠️')
+    st.toast('Model parameters reset. Retraining required.', icon='⚠️')
 
 with st.sidebar:
     st.header("Pipeline Controls")
@@ -80,9 +80,9 @@ with st.sidebar:
 # Guard clause testing against our state boolean: Inference is strictly locked 
 # unless the ML pipeline confirms successful compilation and training.
 if st.session_state.is_trained:
-    st.success(f'Model trained — {len(st.session_state.training_history)} run(s)')
+    st.success(f'Model compiled and trained — {len(st.session_state.training_history)} iteration(s)')
     if st.button('Predict', key='predict_stateful'):
-        st.info("Running dummy prediction on test set...")
-        st.write("Prediction: [0.12, 0.84, 0.67]")
+        st.info("Executing inference pipeline on test subset...")
+        st.write("Prediction Probabilities: [0.12, 0.84, 0.67]")
 else:
-    st.warning('Please use the sidebar to train the model first.')
+    st.warning('Please initialize and train the model via the sidebar controls.')

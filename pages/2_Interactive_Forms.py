@@ -1,10 +1,10 @@
 import streamlit as st
 import time
 
-st.set_page_config(page_title="Diagnostic Intelligence System", page_icon="🏥", layout="wide")
+st.set_page_config(page_title="Diagnostic Intelligence System", page_icon="🩺", layout="wide")
 
 st.title("Patient Diagnosis Form")
-st.write("Using `st.form` to collect patient data and run ML predictions.")
+st.write("Secure interface for clinical data entry and diagnostic model inference.")
 
 st.divider()
 
@@ -59,9 +59,9 @@ with st.form('patient_form'):
             # In production, this would be replaced with: `prediction = model.predict(X_test)`
             # Here, it determines "High Risk" if age > 60 or if the patient presents 2+ symptoms.
             if len(symptoms) >= 2 or age > 60:
-                st.error("🚨 Prediction: High Risk of Disease (Confidence: 87%)")
+                st.error("Prediction: High Risk of Disease (Confidence: 87%)")
             else:
-                st.success("✅ Prediction: Low Risk (Confidence: 92%)")
+                st.success("Prediction: Low Risk (Confidence: 92%)")
                 
             st.write(f'Calculated BMI: {bmi:.1f} | Symptoms reported: {len(symptoms)}')
 

@@ -4,10 +4,10 @@ from pathlib import Path
 import time
 
 # Configure the Streamlit page metadata, which appears in the browser tab and sidebar.
-st.set_page_config(page_title="Diagnostic Intelligence System", page_icon="🏥", layout="wide")
+st.set_page_config(page_title="Diagnostic Intelligence System", page_icon="🩺", layout="wide")
 
 st.title("Data and Metrics")
-st.write("This page demonstrates data loading, summary metrics, and dataset viewing.")
+st.write("This module provides interfaces for dataset acquisition, aggregate performance metrics, and tabular data inspection.")
 
 st.divider()
 

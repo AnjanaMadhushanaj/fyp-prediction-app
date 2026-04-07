@@ -4,7 +4,7 @@ import streamlit as st
 # This acts as the global entry point and establishes the layout for the Multi-Page app architecture.
 st.set_page_config(
     page_title='Diagnostic Intelligence System',
-    page_icon='🏥', 
+    page_icon='🩺', 
     layout='wide', 
     initial_sidebar_state='expanded'
 )

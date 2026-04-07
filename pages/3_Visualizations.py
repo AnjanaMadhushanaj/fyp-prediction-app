@@ -8,7 +8,7 @@ import plotly.graph_objects as go
 from PIL import Image
 from pathlib import Path
 
-st.set_page_config(page_title="Diagnostic Intelligence System", page_icon="🏥", layout="wide")
+st.set_page_config(page_title="Diagnostic Intelligence System", page_icon="🩺", layout="wide")
 
 st.title("Data Visualizations")
 
