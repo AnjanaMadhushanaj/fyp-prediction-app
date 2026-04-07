@@ -10,8 +10,8 @@ st.set_page_config(
 )
 
 # Landing Page Content
-st.title('Welcome to My FYP Application')
-st.write('This is the Home Page of my Multi-Page Streamlit App.')
+st.title('Diagnostic Intelligence System')
+st.write('Welcome to the centralized dashboard of the Diagnostic Intelligence System.')
 
 # Centralized navigation guide for end-users
 st.markdown('''
@@ -26,7 +26,7 @@ Please select a page from the sidebar to explore different components of the pro
 # Demonstration of code rendering for documentation purposes
 st.code('''
 def main():
-    print("Welcome to the final year project!")
+    print("Welcome to the Diagnostic Intelligence System!")
 ''', language='python')
 
 # Mathematical formula rendering for research/academic components
