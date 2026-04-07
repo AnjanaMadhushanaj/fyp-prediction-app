@@ -10,6 +10,10 @@ This page demonstrates how to persist variables and models across re-runs.
 
 st.header("Volatile vs Session State Counters")
 
+# --- UNDERSTANDING STATEFULNESS IN STREAMLIT ---
+# Streamlit inherently executes the entire python script top-to-bottom on every user interaction.
+# Therefore, normal Python variables (like `count = 0` below) are "volatile" and will reset 
+# back to zero on every button press.
 col1, col2 = st.columns(2)
 
 with col1:
@@ -20,6 +24,8 @@ with col1:
     st.write(f'Count: {count}')
 
 with col2:
+    # To maintain state across these top-to-bottom re-runs, we utilize `st.session_state`.
+    # This acts as a persistant dictionary tied uniquely to the current user's browser session.
     st.subheader("Session State Counter (Persists)")
     if 'count' not in st.session_state:
         st.session_state.count = 0
@@ -29,8 +35,12 @@ with col2:
 
 st.divider()
 
+# --- STATEFUL MACHINE LEARNING PIPELINE DEMO ---
 st.header("Stateful ML Pipeline Demo")
 
+# Initializing global operational flags in session state. By doing this ONCE, we ensure 
+# the user keeps their current training history, dataset configurations, and models 
+# even if they navigate temporarily to another page within the application.
 defaults = {
     'model': None,
     'training_history': [],
@@ -42,6 +52,9 @@ for key, val in defaults.items():
     if key not in st.session_state:
         st.session_state[key] = val
 
+# Callback functions are invoked *before* the script re-runs.
+# When a user changes the underlying algorithm, we use a callback to instantly reset the 
+# global `is_trained` boolean flag preventing inference on mismatched architecture definitions.
 def on_model_change():
     st.session_state.model = None
     st.session_state.is_trained = False
@@ -49,6 +62,7 @@ def on_model_change():
 
 with st.sidebar:
     st.header("Pipeline Controls")
+    # Tying the `on_model_change` callback explicitly to the selectbox interaction.
     algorithm = st.selectbox(
         'Algorithm',
         ['Random Forest', 'SVM', 'XGBoost'],
@@ -56,12 +70,15 @@ with st.sidebar:
     )
     if st.button('Train Model', type='primary', key='train_model_sidebar_stateful'):
         with st.spinner(f'Training {algorithm}...'):
+            # Updating our persistent state variables indicating the model is effectively deployed.
             st.session_state.is_trained = True
             st.session_state.training_history.append(
                 {'epoch': len(st.session_state.training_history)+1,'accuracy': 0.94}
             )
             st.success('Model ready!')
 
+# Guard clause testing against our state boolean: Inference is strictly locked 
+# unless the ML pipeline confirms successful compilation and training.
 if st.session_state.is_trained:
     st.success(f'Model trained — {len(st.session_state.training_history)} run(s)')
     if st.button('Predict', key='predict_stateful'):
