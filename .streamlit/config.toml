@@ -1,20 +1,6 @@
-[server]
-
-port = 8501
-headless = true # Required for deployment
-enableCORS = false
-enableXsrfProtection = false
-
-
 [theme]
-
-primaryColor = '#FF4B4B' # Streamlit red (or your brand colour)
-backgroundColor = '#FFFFFF'
-secondaryBackgroundColor = '#F0F2F6'
-textColor = '#262730'
-font = 'sans serif'
-
-
-[browser]
-
-gatherUsageStats = false # Disable telemetry
+primaryColor = "#3A7BD5"
+backgroundColor = "#F9FBFC"
+secondaryBackgroundColor = "#E6F0FA"
+textColor = "#1D2D50"
+font = "sans serif"

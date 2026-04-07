@@ -3,8 +3,8 @@ import streamlit as st
 # Configure the main application page settings.
 # This acts as the global entry point and establishes the layout for the Multi-Page app architecture.
 st.set_page_config(
-    page_title='FYP Home',
-    page_icon='🏠', 
+    page_title='Diagnostic Intelligence System',
+    page_icon='🏥', 
     layout='wide', 
     initial_sidebar_state='expanded'
 )

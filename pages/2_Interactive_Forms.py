@@ -1,7 +1,7 @@
 import streamlit as st
 import time
 
-st.set_page_config(page_title="Interactive Forms", page_icon="🎛️", layout="wide")
+st.set_page_config(page_title="Diagnostic Intelligence System", page_icon="🏥", layout="wide")
 
 st.title("Patient Diagnosis Form")
 st.write("Using `st.form` to collect patient data and run ML predictions.")
